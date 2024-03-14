@@ -132,23 +132,32 @@ namespace APIService.Controllers
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-                //not arama
-                //Clicked
+        [HttpGet("open-note/{noteid}")]
+        public IActionResult OpenNote(int id)
+        {
+            var note = _noteDal.GetNotesById(id);
+            if (note == null)
+            {
+                return NotFound();
             }
+            return Ok(note);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //not arama
+        
+    }
+ }
