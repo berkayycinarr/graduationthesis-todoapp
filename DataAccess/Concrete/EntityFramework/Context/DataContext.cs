@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-KEDAPU1\SQLEXPRESS;
+            optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-E832K2V\SQLEXPRESS;
                 initial catalog = TodoDB; 
                 TrustServerCertificate = true; 
                 integrated security = true");
