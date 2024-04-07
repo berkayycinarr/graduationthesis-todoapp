@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{FAC3C78E-B3B8-4A48-9D16-A9BA633C8568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIService", "APIService\APIService.csproj", "{B66002B6-7FC2-473D-97B0-99930C7FF2BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIService", "APIService\APIService.csproj", "{B66002B6-7FC2-473D-97B0-99930C7FF2BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{FCC96CB3-8069-4DDD-8ED1-593F689110C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B66002B6-7FC2-473D-97B0-99930C7FF2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66002B6-7FC2-473D-97B0-99930C7FF2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B66002B6-7FC2-473D-97B0-99930C7FF2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC96CB3-8069-4DDD-8ED1-593F689110C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC96CB3-8069-4DDD-8ED1-593F689110C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC96CB3-8069-4DDD-8ED1-593F689110C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC96CB3-8069-4DDD-8ED1-593F689110C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

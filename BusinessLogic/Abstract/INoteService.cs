@@ -1,4 +1,6 @@
-﻿using Entities.Concrete;
+﻿using BusinessLogic.Dtos.Requests;
+using BusinessLogic.Dtos.Responses;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,11 @@ namespace BusinessLogic.Abstract
 {
     public interface INoteService
     {
-        List <Note> GetAllNotes();
-        void AddNote(Note note);
-        void UpdateNote(Note note);
+        List <CreatedNoteResponse> GetAllNotes();
+        void AddNote(CreateNoteRequest createNoteRequest);
+        void UpdateNote(CreateNoteRequest createNoteRequest);
         void DeleteNoteById(int id);
-        public List <Note> GetNotesByDate(DateTime selectedDate);
-        Note GetNotesById(int Id);
+        public List <CreatedNoteResponse> GetNotesByDate(DateTime selectedDate);
+        CreatedNoteResponse GetNotesById(int Id);
     }
 }
