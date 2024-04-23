@@ -1,13 +1,6 @@
-﻿using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessLogic.Dtos.Responses
+﻿namespace Presentation.Models
 {
-    public class CreatedNoteResponse : Note
+    public class NoteViewModel
     {
         public int Id { get; set; }
         public string Baslik { get; set; }

@@ -7,7 +7,7 @@ namespace APIService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : Controller
+    public class UsersController : ControllerBase
     {
         private IUserDal _userDal;
 

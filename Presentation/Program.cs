@@ -1,7 +1,17 @@
+using BusinessLogic.Abstract;
+using BusinessLogic.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<INoteService, NoteManager>;
+builder.Services.AddSingleton<NoteManager, NoteDal>;
+builder.Services.AddSingleton<UserManager, UserDal>;
+
+
 
 var app = builder.Build();
 

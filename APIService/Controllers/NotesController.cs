@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APIService.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class NoteController : Controller
+    [ApiController]
+    public class NotesController : ControllerBase
     {
         private INoteDal _noteDal;
 

@@ -10,7 +10,6 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public Note note { get; set; }
-        
 
     }
 }

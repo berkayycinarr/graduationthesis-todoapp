@@ -1,4 +1,6 @@
 ﻿using BusinessLogic.Abstract;
+using BusinessLogic.Dtos.Requests;
+using BusinessLogic.Dtos.Responses;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete;
@@ -29,7 +31,7 @@ namespace BusinessLogic.Concrete
             _noteDal.DeleteNoteById(id);
         }
 
-        public List<Note> GetAllNotes()
+        public List <Note> GetAllNotes()
         {
             return _noteDal.GetAllNotes();
         }

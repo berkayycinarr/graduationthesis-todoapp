@@ -11,11 +11,11 @@ namespace BusinessLogic.Abstract
 {
     public interface INoteService
     {
-        List <CreatedNoteResponse> GetAllNotes();
-        void AddNote(CreateNoteRequest createNoteRequest);
-        void UpdateNote(CreateNoteRequest createNoteRequest);
+        List <Note> GetAllNotes();
+        void AddNote(Note note);
+        void UpdateNote(Note note);
         void DeleteNoteById(int id);
-        public List <CreatedNoteResponse> GetNotesByDate(DateTime selectedDate);
-        CreatedNoteResponse GetNotesById(int Id);
+        List <Note> GetNotesByDate(DateTime selectedDate);
+        Note GetNotesById(int Id);
     }
 }

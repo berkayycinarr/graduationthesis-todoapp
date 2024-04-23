@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APIService.Controllers
 {
-    public class CalendarController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CalendarController : ControllerBase
     {
         private INoteDal _noteDal;
 
