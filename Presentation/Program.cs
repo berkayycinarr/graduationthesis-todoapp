@@ -7,9 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<INoteService, NoteManager>;
-builder.Services.AddSingleton<NoteManager, NoteDal>;
-builder.Services.AddSingleton<UserManager, UserDal>;
+
+builder.Services.AddSingleton<INoteService, NoteManager>();
+builder.Services.AddSingleton<INoteDal, NoteDal>();
+builder.Services.AddSingleton<IUserDal, UserDal>();
+builder.Services.AddSingleton<IUserService, UserManager>();
 
 
 
@@ -32,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=SignUp}/{id?}");
 
 app.Run();

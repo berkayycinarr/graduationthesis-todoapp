@@ -7,7 +7,7 @@ namespace DataAccess.Concrete
 {
     public class UserDal : IUserDal
     {
-        public void Add(User user)
+        public void AddUser(User user)
         {
             using (DataContext context = new DataContext())
             {
@@ -38,7 +38,7 @@ namespace DataAccess.Concrete
         {
             using (DataContext context = new DataContext())
             {
-                return context.Set<User>().SingleOrDefault(p => p.Status == true);
+                return context.Set<User>().SingleOrDefault(p => p.IsActive == true);
             }
         }
 

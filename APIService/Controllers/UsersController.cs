@@ -21,7 +21,7 @@ namespace APIService.Controllers
 
             try
             {
-                _userDal.Add(user);
+                _userDal.AddUser(user);
                 return Ok("User added successfully");
             }
             catch (Exception ex)

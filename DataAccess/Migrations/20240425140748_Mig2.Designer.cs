@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240330101421_Mig1")]
-    partial class Mig1
+    [Migration("20240425140748_Mig2")]
+    partial class Mig2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -56,19 +56,18 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icerik")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("NotTarihi")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Oncelik")
+                    b.Property<int?>("Oncelik")
                         .HasColumnType("int");
 
                     b.Property<TimeOnly>("Saat")
                         .HasColumnType("time");
 
-                    b.Property<bool>("Yapildimi")
+                    b.Property<bool?>("Yapildimi")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");

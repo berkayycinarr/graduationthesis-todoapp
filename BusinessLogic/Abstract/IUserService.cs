@@ -10,7 +10,7 @@ namespace BusinessLogic.Abstract
     public interface IUserService
     {
         Task<User> GetByMail(string email);
-        void Add(User user);
+        void AddUser(User user);
         void LogIn(User user);
         User GetCurrentUser();
         void LogOut(User user);

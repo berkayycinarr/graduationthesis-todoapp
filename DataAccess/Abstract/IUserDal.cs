@@ -10,7 +10,7 @@ namespace DataAccess.Abstract
     public interface IUserDal
     {
         Task <User> GetByMail(string email);
-        void Add(User user);
+        void AddUser(User user);
         void LogIn(User user);
         User GetCurrentUser();
         void LogOut(User user);

@@ -17,9 +17,9 @@ namespace BusinessLogic.Concrete
         {
             _userDal = userDal;
         }
-        public void Add(User user)
+        public void AddUser(User user)
         {
-            _userDal.Add(user);
+            _userDal.AddUser(user);
         }
 
         public async Task<User> GetByMail(string email)
