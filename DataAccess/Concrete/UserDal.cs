@@ -17,11 +17,11 @@ namespace DataAccess.Concrete
             }
         }
 
-        public async Task<User> GetByMail(string email)
+        public User GetByMail(string email)
         {
             using (DataContext context = new DataContext())
             {
-                return await context.Users.Where(x => x.EmailAddress == email).FirstOrDefaultAsync();
+                return context.Users.Where(x => x.EmailAddress == email).FirstOrDefault();
             }
         }
 
@@ -71,5 +71,19 @@ namespace DataAccess.Concrete
                 context.SaveChanges();
             }
         }
+
+        public void UpdateUserStatus(int userId, bool isActive)
+        {
+            using (DataContext context = new DataContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+                if (user != null)
+                {
+                    user.IsActive = isActive;
+                    context.SaveChanges();
+                }
+            }
+        }
+
     }
 }

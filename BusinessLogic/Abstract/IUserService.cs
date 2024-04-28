@@ -9,12 +9,13 @@ namespace BusinessLogic.Abstract
 {
     public interface IUserService
     {
-        Task<User> GetByMail(string email);
+        User GetByMail(string email);
         void AddUser(User user);
-        void LogIn(User user);
         User GetCurrentUser();
         void LogOut(User user);
         void Update(User user);
         User GetUserById(int id);
+        void LogIn(User user);
+        void UpdateUserStatus(int userId, bool isActive);
     }
 }

@@ -22,7 +22,7 @@ namespace Presentation.Controllers
         }
         
         [HttpPost]
-        public ActionResult Add(Note note)
+        public ActionResult AddNote(Note note)
         {
             if (ModelState.IsValid)
             {

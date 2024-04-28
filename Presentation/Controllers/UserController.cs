@@ -6,6 +6,7 @@ using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using DataAccess.Concrete;
 using Presentation.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Presentation.Controllers
 {
@@ -28,33 +29,27 @@ namespace Presentation.Controllers
             return View(user); // Eğer model geçersizse kullanıcıyı aynı sayfada tut
         }
 
-        public ActionResult Login(LoginViewModel model)
+        public async Task<ActionResult> SignIn(LoginViewModel usermodel)
         {
             if (ModelState.IsValid)
             {
-                var user = _userManager.GetByMail(model.EmailAddress);
-                if (user != null)
+                var loggedUser = _userManager.GetByMail(usermodel.EmailAddress);
+                if (loggedUser != null)
                 {
-                    // Kullanıcı giriş yaptı, statusunu true yap
-                    
-                    //user.IsActive = true;
-                    //_userManager.UpdateUser(user);
-
+                    _userManager.LogIn(loggedUser);// Kullanıcı giriş yaptı
+                    _userManager.UpdateUserStatus(loggedUser.Id,true);//status güncellendi
+                   
                     // Başarılı giriş sonrasında ana sayfaya yönlendir
-                    return View("Anasayfa");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid email or password.");
+                    return RedirectToAction("Anasayfa");
                 }
             }
-            return View(model); // Geçersiz model ise, kullanıcıyı aynı sayfada tut ve hata mesajı göster
+            return View("SignIn"); // Geçersiz model ise, kullanıcıyı error sayfasına at
         }
 
 
         public async Task<ActionResult> GetByEmail(string email)
         {
-            var user = await _userManager.GetByMail(email);
+            var user = _userManager.GetByMail(email);  
             if (user != null)
             {
                 return View(user); // Kullanıcı bulunduysa detaylarını gösteren bir view döndür

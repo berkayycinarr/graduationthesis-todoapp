@@ -1,7 +1,7 @@
 ﻿@model Entities.Concrete.User
 
 @{
-    ViewBag.Title = "Sign Up";
+    ViewBag.Title = "Kayıt Ol";
 }
 
 <!DOCTYPE html>
@@ -40,25 +40,25 @@
 
                             <div class="form-group">
                                 <label for="firstName">Adınız</label>
-                                <input type="text" class="form-control" id="firstName" name="FirstName" required>
+                                <input type="text" class="form-control" id="firstName" name="FirstName">
                                 <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="lastName">Soyadınız</label>
-                                <input type="text" class="form-control" id="lastName" name="LastName" required>
+                                <input type="text" class="form-control" id="lastName" name="LastName">
                                 <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="EmailAddress" required>
+                                <input type="email" class="form-control" id="email" name="EmailAddress">
                                 <span asp-validation-for="EmailAddress" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="password">Şifreniz</label>
-                                <input type="password" class="form-control" id="password" name="Password" required>
+                                <input type="password" class="form-control" id="password" name="Password">
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
 
@@ -68,7 +68,7 @@
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                            <button type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
                         </form>
                     </div>
                 </div>

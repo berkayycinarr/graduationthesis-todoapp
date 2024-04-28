@@ -26,7 +26,7 @@ namespace DataAccess.Concrete
         {
             using (DataContext context = new DataContext())
             {
-                var note = context.Notes.FirstOrDefault(n => n.Id == id);
+                var note = context.Notes.FirstOrDefault(n => n.Id == id);   
                 if (note != null)
                 {
                     context.Notes.Remove(note);
