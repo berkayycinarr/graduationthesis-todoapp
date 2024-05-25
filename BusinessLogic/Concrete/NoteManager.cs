@@ -15,6 +15,7 @@ namespace BusinessLogic.Concrete
     public class NoteManager : INoteService
     {
         private INoteDal _noteDal;
+        
 
         public NoteManager(INoteDal noteDal)
         {
@@ -46,7 +47,7 @@ namespace BusinessLogic.Concrete
             return _noteDal.GetNotesByDate(selectedDate);
         }
 
-        public Note GetNotesById(int Id)
+        public async Task<Note> GetNotesById(int Id)
         {
             return _noteDal.GetNotesById(Id);
         }

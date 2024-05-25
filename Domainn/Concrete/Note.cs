@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -9,13 +10,13 @@ namespace Entities.Concrete
 {
     public class Note
     {
+        [Key]
         public int Id { get; set; }
-        public string Baslik { get; set; }
-        public string? Icerik { get; set; }
-        public bool? Yapildimi { get; set; }
-        public DateTime NotTarihi { get; set; }
-        public TimeOnly Saat { get; set; }
-        public int? Oncelik { get; set; }
+        public string baslik { get; set; }
+        public string? icerik { get; set; }
+        public bool? yapildimi { get; set; }
+        public DateTime notTarihi { get; set; }
+        public int? oncelik { get; set; }
 
     }
 }

@@ -59,7 +59,7 @@ namespace DataAccess.Concrete
         {
             using (DataContext context = new DataContext())
             {
-                return context.Set<Note>().Where(note => note.NotTarihi.Date == selectedDate.Date).ToList();
+                return context.Set<Note>().Where(note => note.notTarihi.Date == selectedDate.Date).ToList();
             }
         }
 
@@ -75,8 +75,8 @@ namespace DataAccess.Concrete
         {
             using (DataContext context = new DataContext())
             {
-                note.Oncelik += 1;
-                context.Notes.OrderBy(n => n.Oncelik).ToList();
+                note.oncelik += 1;
+                context.Notes.OrderBy(n => n.oncelik).ToList();
                 context.SaveChanges();
             }
         }

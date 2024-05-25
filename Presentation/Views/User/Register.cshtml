@@ -1,4 +1,4 @@
-﻿@model Entities.Concrete.User
+﻿@model UserRegisterModel
 
 @{
     ViewBag.Title = "Kayıt Ol";
@@ -35,7 +35,7 @@
                         <h2 class="text-center">@ViewBag.Title</h2>
                     </div>
                     <div class="card-body">
-                        <form asp-controller="User" asp-action="SignUp" method="post">
+                        <form>
                             @Html.AntiForgeryToken()
 
                             <div class="form-group">
@@ -68,7 +68,7 @@
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
+                            <button asp-controller="User" asp-action="Register" type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
                         </form>
                     </div>
                 </div>

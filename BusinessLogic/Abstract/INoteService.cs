@@ -16,6 +16,6 @@ namespace BusinessLogic.Abstract
         void UpdateNote(Note note);
         void DeleteNoteById(int id);
         List <Note> GetNotesByDate(DateTime selectedDate);
-        Note GetNotesById(int Id);
+        Task<Note> GetNotesById(int Id);
     }
 }

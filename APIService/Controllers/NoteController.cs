@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Abstract;
+﻿using APIService.Models;
+using BusinessLogic.Abstract;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework.Contexts;
@@ -10,31 +11,49 @@ namespace APIService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NotesController : ControllerBase
+    public class NoteController : ControllerBase
     {
         private INoteDal _noteDal;
+        private INoteService _noteManager;
+
+        public NoteController(INoteService noteManager, INoteDal noteDal)
+        {
+            _noteManager = noteManager;
+            _noteDal =  noteDal;
+        }
 
         [HttpPost("create/")]
-        public IActionResult Create([FromBody] Note note)
+        public async Task<IActionResult> Create([FromBody] NoteModel model)
         {
-            if (note == null)
+            if (model == null)
             {
                 return BadRequest("Note object is null");
             }
 
             try
             {
-                _noteDal.AddNote(note);
+                var note = new NoteModel
+                {
+                    baslik = model.baslik,
+                    icerik = model.icerik,
+                    yapildimi = model.yapildimi,
+                    oncelik = model.oncelik,
+                    notTarihi = DateTime.UtcNow,
+                    
+                };
+                _noteManager.AddNote(note);
                 return Ok("Note added successfully");
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                // Log the detailed error message
+                var innerExceptionMessage = ex.InnerException?.Message;
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {innerExceptionMessage}");
             }
         }
 
         [HttpDelete("delete/{noteId}")]
-        public IActionResult Delete(int noteId)
+        public async Task <IActionResult> Delete(int noteId)
         {
             try
             {
@@ -53,16 +72,18 @@ namespace APIService.Controllers
                     }
                 }
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                // Log the detailed error message
+                var innerExceptionMessage = ex.InnerException?.Message;
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {innerExceptionMessage}");
             }
         }
 
 
 
         [HttpPut("update/{noteId}")]
-        public IActionResult Update(int noteId, [FromBody] Note updatedNote)
+        public async Task<IActionResult> Update(int noteId, [FromBody] Note updatedNote)
         {
             if (updatedNote == null)
             {
@@ -71,35 +92,34 @@ namespace APIService.Controllers
 
             try
             {
-                var existingNote = _noteDal.GetNotesById(noteId);
+                var existingNote = await _noteManager.GetNotesById(noteId);
                 if (existingNote == null)
                 {
                     return NotFound("Note not found");
                 }
 
-                existingNote.Baslik = updatedNote.Baslik;
-                existingNote.Icerik = updatedNote.Icerik;
-                existingNote.Yapildimi = updatedNote.Yapildimi;
-                existingNote.NotTarihi = updatedNote.NotTarihi;
-                existingNote.Saat = updatedNote.Saat;
+                existingNote.baslik = updatedNote.baslik;
+                existingNote.icerik = updatedNote.icerik;
+                existingNote.yapildimi = updatedNote.yapildimi;
+                existingNote.oncelik = updatedNote.oncelik;
 
-                _noteDal.UpdateNote(existingNote);
+                _noteManager.UpdateNote(existingNote);
 
                 return Ok("Note updated successfully");
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                // Log the detailed error message
+                var innerExceptionMessage = ex.InnerException?.Message;
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {innerExceptionMessage}");
             }
         }
-
         [HttpGet("get/{noteId}")]
-        public ActionResult<Note> GetById(int noteId)
+        public async Task<ActionResult<Note>> GetById(int noteId)
         {
             try
             {
-                var note = _noteDal.GetNotesById(noteId);
-
+                var note = await _noteManager.GetNotesById(noteId);
                 if (note == null)
                 {
                     return NotFound($"Note with ID {noteId} not found.");
@@ -107,9 +127,11 @@ namespace APIService.Controllers
 
                 return Ok(note);
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                // Log the detailed error message
+                var innerExceptionMessage = ex.InnerException?.Message;
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {innerExceptionMessage}");
             }
         }
 
@@ -125,7 +147,7 @@ namespace APIService.Controllers
                     return NotFound();
                 }
 
-                note.Oncelik++;
+                note.oncelik++;
                 await context.SaveChangesAsync();
 
                 return NoContent();
@@ -135,7 +157,7 @@ namespace APIService.Controllers
         [HttpGet("open-note/{noteid}")]
         public IActionResult OpenNote(int id)
         {
-            var note = _noteDal.GetNotesById(id);
+            var note = _noteManager.GetNotesById(id);
             if (note == null)
             {
                 return NotFound();

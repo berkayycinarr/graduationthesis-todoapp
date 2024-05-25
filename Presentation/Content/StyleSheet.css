@@ -1,0 +1,205 @@
+﻿body {
+    background: linear-gradient(to bottom, #FFC0CB, #800080, #000080); /* Pembe, mor ve lacivert renkler arasında geçiş */
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+    min-height: 100vh;
+    overflow-y: auto; /* Yalnızca dikey scroll bar görünür */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff; /* Beyaz arka plan */
+    color: #333; /* Metin rengi */
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo h1 {
+        margin: 0;
+        color: #000; /* Siyah renk */
+    }
+
+/* Navbar Butonları */
+.auth-buttons button {
+    background-color: #800080; /* Mor arka plan */
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Buton boyutunu artır */
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 20px; /* Butonların köşelerini yuvarla */
+    transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+    .auth-buttons button:hover {
+        background-color: rgba(255,192,203,0.7); /* Açık pembeye dönüş */
+    }
+
+/* Ana İçerik Kısmı */
+#main-content {
+    display: flex; /* Main içeriğini flex olarak ayarladık */
+    flex-direction: column; /* Dikey olarak düzenler */
+    gap: 35px; /* Section'lar arasındaki mesafeyi belirliyoruz */
+    padding: 20px;
+}
+
+/* Article */
+article {
+    display: flex; /* Article içeriğini flex olarak ayarladık */
+    flex-direction: column; /* Dikey olarak düzenler */
+    gap: 20px; /* İçerikler arasındaki mesafeyi belirliyoruz */
+}
+
+/* İçerik Bölümleri */
+.welcome-section,
+.about-section,
+.motivation-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px; /* Köşeleri yuvarla */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölgelendirme */
+}
+
+/* Hoş Geldiniz Bölümü */
+.welcome-section {
+    text-align: center; /* İçeriği ortala */
+    margin-top: 6px;
+}
+
+    /* Hoş Geldiniz Butonu */
+    .welcome-section button.start-button {
+        background-color: #800080;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: transform 0.3s ease; /* Buton büyüme efekti ve geçiş süresi */
+    }
+
+        .welcome-section button.start-button:hover {
+            background-color: rgba(255,192,203,0.7);
+            transform: scale(1.1); /* Buton büyüklüğünü arttır */
+        }
+/* Alıntı Bölümü */
+.motivation-section blockquote {
+    border-left: 5px solid #000080; /* Lacivert renk */
+    padding-left: 10px;
+}
+
+/* İçerik 2 ve 3 */
+.about-section,
+.motivation-section {
+    flex: 1; /* İçeriklerin eşit genişlikte olmasını sağlar */
+}
+
+/* Container */
+.sections-container {
+    display: flex;
+    flex-direction: column; /* Dikey olarak düzenler */
+    gap: 35px; /* İçerikler arasındaki mesafeyi belirliyoruz */
+}
+
+/* Footer */
+footer {
+    background-color: #fff; /* Beyaz arka plan */
+    color: #333; /* Metin rengi */
+    text-align: center;
+}
+
+/* Ekstra küçük ekranlar (telefonlar) */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+        font-size: 20px; /* Yazı boyutunu büyüt */
+    }
+
+        .logo img {
+            width: 80px; /* Logo boyutunu büyüt */
+            height: 80px;
+        }
+
+    .auth-buttons {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column; /* Butonları dikey olarak düzenle */
+        gap: 20px;
+    }
+
+        .auth-buttons button {
+            margin-left: 0;
+            margin-bottom: 20px;
+            font-size: 16px; /* Buton boyutunu büyüt */
+            padding: 12px 24px; /* Buton içeriğinin padding'ini artır */
+        }
+
+    .welcome-section {
+        padding: 20px 10px;
+    }
+}
+
+/* Küçük ekranlar (tabletler) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .welcome-section {
+        font-size: 14px;
+    }
+
+    #main-content {
+        height: 92%;
+    }
+
+    .sections-container {
+        display: flex;
+        flex-direction: row; /* İçeriği yatay olarak düzenle */
+        height: 100%;
+    }
+
+    .about-section,
+    .motivation-section {
+        flex: 1; /* İçeriklerin eşit genişlikte olmasını sağlar */
+        width: 50%; /* İçeriklerin yarısı genişliğinde olması için */
+    }
+}
+
+/* Orta ekranlar (dizüstü bilgisayarlar) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .welcome-section {
+        font-size: 16px;
+    }
+}
+
+/* Büyük ekranlar (büyük monitörler) */
+@media only screen and (min-width: 1201px) {
+    .welcome-section {
+        font-size: 18px;
+    }
+}
+
+/* Dizüstü ve Masaüstü Bilgisayarlar */
+@media only screen and (min-width: 901px) {
+    body {
+        overflow-y: hidden; /* Yalnızca dikey scroll bar görünür */
+    }
+}

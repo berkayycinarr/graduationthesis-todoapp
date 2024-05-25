@@ -6,18 +6,34 @@ namespace Presentation.Controllers
     {
         public IActionResult HomePage()
         {
-            return View("Anasayfa");
+            return View("MainPage");
         }
 
-        public IActionResult Giriş()
+        public IActionResult LoginButton()
         {
-            return View("~/Views/User/SignIn.cshtml");
+            return View("~/Views/User/Login.cshtml");
+        }
+        public IActionResult ProfileButton()
+        {
+            return View("~/Views/Account/Profile.cshtml");
         }
 
-        public IActionResult KayıtOl()
+        public IActionResult RegisterButton()
         {
-            return View("~/Views/User/SignUp.cshtml");
+            return View("~/Views/User/Register.cshtml");
         }
+
+        public IActionResult NotePageButton()
+        {
+            return View("~/Views/Note/NotePage.cshtml");
+        }
+
+        public IActionResult CalenderPageButton()
+        {
+            return View("~/Views/Calender/CalenderPage.cshtml");
+        }
+
+
 
     }
 }

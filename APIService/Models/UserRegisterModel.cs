@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Entities.Concrete;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace APIService.Models
 {
-    public class User
+    public class UserRegisterModel : User
     {
-        [Key]
-        public int Id { get; set; }
-       
+
+        [Required]
         public string firstName { get; set; }
-        
+        [Required]
         public string lastName { get; set; }
-       
+        [Required]
         [EmailAddress]
         public string emailAddress { get; set; }
-        
+        [Required]
         public string password { get; set; }
-
+        [Required]
         public string phoneNumber { get; set; }
-        public bool isActive { get; set; }
     }
 }

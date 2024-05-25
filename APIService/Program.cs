@@ -1,12 +1,15 @@
+using BusinessLogic.Abstract;
 using BusinessLogic.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-NoteManager noteManager = new(new NoteDal());
-UserManager userManager = new(new UserDal());
+builder.Services.AddSingleton<INoteService, NoteManager>();
+builder.Services.AddSingleton<INoteDal, NoteDal>();
+builder.Services.AddSingleton<IUserDal, UserDal>();
+builder.Services.AddSingleton<IUserService, UserManager>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

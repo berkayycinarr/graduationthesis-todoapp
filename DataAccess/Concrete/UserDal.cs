@@ -21,7 +21,7 @@ namespace DataAccess.Concrete
         {
             using (DataContext context = new DataContext())
             {
-                return context.Users.Where(x => x.EmailAddress == email).FirstOrDefault();
+                return context.Users.Where(x => x.emailAddress == email).FirstOrDefault();
             }
         }
 
@@ -38,7 +38,7 @@ namespace DataAccess.Concrete
         {
             using (DataContext context = new DataContext())
             {
-                return context.Set<User>().SingleOrDefault(p => p.IsActive == true);
+                return context.Set<User>().SingleOrDefault(p => p.isActive == true);
             }
         }
 
@@ -48,6 +48,7 @@ namespace DataAccess.Concrete
             {
                 var updatedEntry = context.Entry(user);
                 updatedEntry.State = EntityState.Modified;
+                user.isActive = true;
                 context.SaveChanges();
             }
         }
@@ -79,7 +80,7 @@ namespace DataAccess.Concrete
                 var user = context.Users.FirstOrDefault(u => u.Id == userId);
                 if (user != null)
                 {
-                    user.IsActive = isActive;
+                    user.isActive = isActive;
                     context.SaveChanges();
                 }
             }

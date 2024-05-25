@@ -19,34 +19,33 @@ namespace Presentation.Controllers
             _userManager = userManager;
         }
 
-        public ActionResult SignUp(User user)
+        public ActionResult Register(User user)
         {
             if (ModelState.IsValid)
             {
                  _userManager.AddUser(user);
-                return View("SignIn"); // Başarılı ekleme sonrasında giriş sayfasında yönlendir
+                return View("Login"); // Başarılı ekleme sonrasında giriş sayfasında yönlendir
             }
-            return View(user); // Eğer model geçersizse kullanıcıyı aynı sayfada tut
+
+            return View("Register"); // Eğer model geçersizse kullanıcıyı aynı sayfada tut
         }
 
-        public async Task<ActionResult> SignIn(LoginViewModel usermodel)
+        public ActionResult Login(string email, string Password)
         {
             if (ModelState.IsValid)
             {
-                var loggedUser = _userManager.GetByMail(usermodel.EmailAddress);
-                if (loggedUser != null)
+
+                var loggedUser = _userManager.GetByMail(email);
+                if (loggedUser != null) 
                 {
-                    _userManager.LogIn(loggedUser);// Kullanıcı giriş yaptı
-                    _userManager.UpdateUserStatus(loggedUser.Id,true);//status güncellendi
-                   
+
                     // Başarılı giriş sonrasında ana sayfaya yönlendir
-                    return RedirectToAction("Anasayfa");
+                    return View("~/Views/Home/MainPage.cshtml");
                 }
             }
-            return View("SignIn"); // Geçersiz model ise, kullanıcıyı error sayfasına at
+            return View("Login"); // Geçersiz model ise, kullanıcıyı aynı sayfada tut
         }
-
-
+        
         public async Task<ActionResult> GetByEmail(string email)
         {
             var user = _userManager.GetByMail(email);  

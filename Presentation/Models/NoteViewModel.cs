@@ -1,6 +1,8 @@
-﻿namespace Presentation.Models
+﻿using Entities.Concrete;
+
+namespace Presentation.Models
 {
-    public class NoteViewModel
+    public class NoteViewModel : Note
     {
         public int Id { get; set; }
         public string Baslik { get; set; }

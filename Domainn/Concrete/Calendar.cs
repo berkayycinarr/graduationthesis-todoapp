@@ -11,7 +11,7 @@ namespace Entities.Concrete
     {
         public int GunSayisi { get; set; }
         public int Saat { get; set; }
-        public String Gun { get; set; }
+        public string Gun { get; set; }
         public Note Not { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Presentation.Controllers
         {
             _noteManager = noteManager;
         }
-        
+
         [HttpPost]
         public ActionResult AddNote(Note note)
         {
@@ -41,12 +41,12 @@ namespace Presentation.Controllers
 
                 if (existingNote != null)
                 {
-                    existingNote.Baslik = note.Baslik;
-                    existingNote.Icerik = note.Icerik;
-                    existingNote.Yapildimi = note.Yapildimi;
-                    existingNote.Oncelik = note.Oncelik;
+                    existingNote.baslik = note.baslik;
+                    existingNote.icerik = note.icerik;
+                    existingNote.yapildimi = note.yapildimi;
+                    existingNote.oncelik = note.oncelik;
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("NotePage");
             }
             return View(note);
         }
@@ -58,7 +58,7 @@ namespace Presentation.Controllers
             {
                 _noteManager.DeleteNoteById(id);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("NotePage");
         }
 
         

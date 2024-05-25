@@ -22,7 +22,7 @@ namespace BusinessLogic.Concrete
             _userDal.AddUser(user);
         }
 
-        public User GetByMail(string email)
+        public async Task<User> GetByMail(string email)
         {
             return _userDal.GetByMail(email);
         }
@@ -36,7 +36,7 @@ namespace BusinessLogic.Concrete
             _userDal.LogOut(user);
         }
 
-        public User GetCurrentUser()
+        public async Task<User> GetCurrentUser()
         {
             return _userDal.GetCurrentUser();
         }
@@ -46,7 +46,7 @@ namespace BusinessLogic.Concrete
             _userDal.Update(user);
         }
 
-        public User GetUserById(int id)
+        public async Task<User> GetUserById(int id)
         {
             return _userDal.GetUserById(id);
         }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240428104546_Mig5")]
-    partial class Mig5
+    [Migration("20240521155118_Mig2")]
+    partial class Mig2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,23 +51,23 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Baslik")
+                    b.Property<string>("baslik")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Icerik")
+                    b.Property<string>("icerik")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("NotTarihi")
+                    b.Property<DateTime>("notTarihi")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("Oncelik")
+                    b.Property<int?>("oncelik")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("Saat")
+                    b.Property<TimeOnly>("saat")
                         .HasColumnType("time");
 
-                    b.Property<bool?>("Yapildimi")
+                    b.Property<bool?>("yapildimi")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -83,26 +83,26 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("EmailAddress")
+                    b.Property<string>("emailAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("firstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("isActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("lastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<string>("phoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
